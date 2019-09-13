@@ -5,17 +5,27 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
       - run: npm run-script build
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
   deploy:
     docker:
       - image: circleci/node
     steps:
       - checkout
-      - run: npm install
-      - run: npm run-script build
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}      
       - run: sudo npm install -g --silent netlify-cli
       - run: netlify deploy --dir=./public -p
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
 
 
 workflows:
