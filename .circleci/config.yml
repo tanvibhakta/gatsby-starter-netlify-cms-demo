@@ -13,6 +13,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - run: npm run-script build
       - run: sudo npm install -g --silent netlify-cli
       - run: netlify deploy --dir=./public -p
 
