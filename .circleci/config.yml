@@ -5,12 +5,14 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
+      - run: npm install
       - run: npm run-script build
   deploy:
     docker:
       - image: circleci/node
     steps:
       - checkout
+      - run: npm install
       - run: sudo npm install -g --silent netlify-cli
       - run: netlify deploy --dir=./public -p
 
