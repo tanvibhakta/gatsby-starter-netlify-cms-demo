@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
-import Layout from '../components/Layouts/Layout'
+import Layout from '../components/Layouts/MicrositeLayout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
 
-export const IndexPageTemplate = ({
+export const Microsite2Template = ({
   image,
   title,
   heading,
@@ -114,7 +114,7 @@ export const IndexPageTemplate = ({
   </div>
 )
 
-IndexPageTemplate.propTypes = {
+Microsite2Template.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -126,12 +126,12 @@ IndexPageTemplate.propTypes = {
   }),
 }
 
-const IndexPage = ({ data }) => {
+const Microsite2 = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
-      <IndexPageTemplate
+      <Microsite2Template
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -144,7 +144,7 @@ const IndexPage = ({ data }) => {
   )
 }
 
-IndexPage.propTypes = {
+Microsite2.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -152,11 +152,11 @@ IndexPage.propTypes = {
   }),
 }
 
-export default IndexPage
+export default Microsite2
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+  query Microsite2Template {
+    markdownRemark(frontmatter: { templateKey: { eq: "microsite-2" } }) {
       frontmatter {
         title
         image {
