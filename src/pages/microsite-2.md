@@ -1,5 +1,6 @@
 ---
 templateKey: microsite-2
+path: custom-route
 title: Great beans with a conscience
 image: /img/products-grid1.jpg
 heading: This is a test for my tracer bullet coffee pastry.
