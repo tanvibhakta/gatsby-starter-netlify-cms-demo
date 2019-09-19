@@ -62,6 +62,7 @@ collections:
 
   - name: "weird-collection"
     label: "A Weird Collection"
+    folder: "src/pages/kitchenSink"
     create: true
     fields:
       - label: 'Related Post'
