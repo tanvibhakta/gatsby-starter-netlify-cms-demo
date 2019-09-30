@@ -16,6 +16,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
+              slug
               tags
               templateKey
             }
@@ -33,8 +34,15 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach(edge => {
       const id = edge.node.id
+      let slug = edge.node.fields.slug;
+      
+      // If an explicit path is set on the blog, use it
+      if (edge.node.frontmatter.slug) {
+        slug = edge.node.frontmatter.slug;
+      }
+
       createPage({
-        path: edge.node.fields.slug,
+        path: slug,
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
